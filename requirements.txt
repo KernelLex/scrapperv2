@@ -6,4 +6,4 @@ python-dotenv>=1.0.1
 phonenumbers>=8.13.37
 validators>=0.28.0
 lxml>=5.2.1
-duckduckgo-search>=6.1.0
+ddgs>=9.0.0

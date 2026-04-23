@@ -265,7 +265,7 @@ DB_PATH=leads.db
 | Technology | Purpose |
 |------------|---------|
 | [Streamlit](https://streamlit.io) | Dashboard UI |
-| [duckduckgo-search](https://github.com/deedy5/duckduckgo_search) | Free search (no key) |
+| [ddgs](https://github.com/deedy5/ddgs) | Free DuckDuckGo search (no key) |
 | [requests](https://requests.readthedocs.io) | HTTP client for page fetching |
 | [BeautifulSoup4](https://www.crummy.com/software/BeautifulSoup/) | HTML parsing |
 | [pandas](https://pandas.pydata.org) | Data manipulation & CSV export |

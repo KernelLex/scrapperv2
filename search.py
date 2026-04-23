@@ -42,20 +42,25 @@ def build_queries(sector: str, city: str) -> list[str]:
 
 def search_duckduckgo(query: str, num: int = 10) -> list[dict]:
     """
-    Search via DuckDuckGo using the `duckduckgo-search` library.
-    Completely free — no API key, no signup, no quota.
+    Search via DuckDuckGo — completely free, no API key, no signup.
+    Uses the `ddgs` package (formerly `duckduckgo-search`).
     """
+    # Try new package name first, fall back to old name
+    DDGS = None
     try:
-        from duckduckgo_search import DDGS
+        from ddgs import DDGS
     except ImportError:
-        logger.error("duckduckgo-search not installed. Run: pip install duckduckgo-search")
-        return []
+        try:
+            from duckduckgo_search import DDGS
+        except ImportError:
+            logger.error("ddgs not installed. Run: pip install ddgs")
+            return []
 
     rate_limit("ddg", min_gap_seconds=1.5)
     results = []
     try:
-        with DDGS() as ddgs:
-            for r in ddgs.text(query, max_results=min(num, 20)):
+        with DDGS() as client:
+            for r in client.text(query, max_results=min(num, 20)):
                 results.append({
                     "title":   r.get("title", ""),
                     "link":    r.get("href", ""),
